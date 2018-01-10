@@ -21,7 +21,8 @@ class App extends Component {
         {front: "substring()", back: "substring() returns a subset of a string between one index START (inclusive) and another END (Non-Inclusive), or through the end of the string (if indexEnd is omitted)."},
         {front: "template", back: "an HTML template must include..."},
       ],
-      currentCard: {}
+      currentCard: {},
+      response: ''
     }
     this.updateCard = this.updateCard.bind(this);
   }
@@ -33,6 +34,21 @@ class App extends Component {
       cards: currentCards,
       currentCard: this.getRandomCard(currentCards)
     })
+  }
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ response: res.express }))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
+
+    if (response.status !== 200) throw Error(body.message);
+
+    return body;
   }
 
   getRandomCard(currentCards) {
@@ -59,6 +75,7 @@ class App extends Component {
         <div className='buttonRow'>
           <DrawButton drawCard={this.updateCard} />
         </div>
+        <div className="littleServer">{this.state.response}</div>
       </div>
     );
   }
