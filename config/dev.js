@@ -12,7 +12,7 @@
 module.exports = {
   googleClientID:     process.env.GOOGLE_DEV_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_DEV_CLIENT_SECRET,
-  googleCallbackURI:  process.env.GOOGLE_DEV_CALLBACK_URI,
+  googleCallbackURL:  process.env.GOOGLE_DEV_CALLBACK_URL,
   mongoURI:           process.env.MONGODB_DEV_URI,
   cookieKey:          process.env.DEV_COOKIE_KEY,
 }

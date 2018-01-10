@@ -8,7 +8,11 @@
     "url": "",
     "email": ""
   },
-  "keywords": ["flashcards","study","studdy-buddy"],
+  "keywords": [
+    "flashcards",
+    "study",
+    "studdy-buddy"
+  ],
   "license": "ISC",
   "private": "true",
   "contributors": [
@@ -30,6 +34,7 @@
   },
   "dependencies": {
     "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "mongoose": "^4.13.9",
     "nodemon": "^1.14.10",

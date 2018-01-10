@@ -12,7 +12,7 @@
 /*********************
   NODE REQUIREMENTS
  *********************/
-require(dotenv).config();
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -23,7 +23,7 @@ const passport = require('passport');
   LOCAL REQUIREMENTS
  *********************/
 const keys = require('./config/keys');
-const authRoutes = require('./routes/auth-routes');
+const authRoutes = require('./routes/authRoutes');
 
 require('./models/User');
 require('./services/passport');
@@ -43,7 +43,7 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParse.json());
+//app.use(bodyParse.json());
 
 app.listen(PORT, (err) => {
   if (err) return console.log(`ERROR port ${PORT}`);
@@ -55,10 +55,14 @@ app.listen(PORT, (err) => {
  ********************/
 mongoose.Promise = Promise;
 mongoose.connect(
-  keys.mongoURI,
-  {useMongoClient: true},
-  (err) => {
-    if (err) return console.log(err);
-    console.log('Connected to FlashCards DataBase from Server.js!');
+  keys.mongoURI, {
+    useMongoClient: true
   }
 );
+
+
+//   (err) => {
+//     if (err) return console.log(err);
+//     console.log('Connected to FlashCards DataBase from Server.js!');
+//   }
+// );

@@ -18,4 +18,4 @@ const userSchema = new Schema({
   thumbnail: String,
 });
 
-mongoose.model('user', userSchema);
+mongoose.model('users', userSchema);
