@@ -25,12 +25,14 @@ passport.use(
       proxy: true,
     },
     (accessToken, refreshToken, profile, done) => {
+      console.log("LOOKING");
       User.findOne({ googleId: profile.id }).then(
         (existingUser) => {
           if (existingUser) {
-            console.log('User is: ', existingUser);
+            console.log('Existing user is: ', existingUser);
             done(null, existingUser);
           } else {
+            console.log(`Creating new user for ${profile} with profile id: ${profile.id}`);
             new User(
               {
                 username: profile.displayName,
@@ -38,7 +40,7 @@ passport.use(
                 thumbnail: profile._json.image.url
               }
             ).save().then(
-              newUser => {
+              (newUser) => {
                 console.log('new user created:' + newUser);
                 done(null, newUser);
               }
