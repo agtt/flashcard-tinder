@@ -2,7 +2,11 @@
   "name": "flashcard-tinder-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": {
+    "/auth/google": {
+      "target": "http://localhost:5000"
+    }
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "concurrently": "^3.5.1",
