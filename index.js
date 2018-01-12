@@ -27,6 +27,14 @@ require('./models/User');
 require('./services/passport');
 
 /*********************
+  APPLICATION SERVER
+ *********************/
+/* Heroku will dynamically allocate a PORT
+ * so don't set one manually */
+const PORT = process.env.PORT || process.env.DEV_PORT;
+const app = express();
+
+/*********************
  PRODUCTION REQUIREMENTS
 *********************/
 if (process.env.NODE_ENV === 'production') {
@@ -37,14 +45,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-/*********************
-  APPLICATION SERVER
- *********************/
-/* Heroku will dynamically allocate a PORT
- * so don't set one manually */
-const PORT = process.env.PORT || process.env.DEV_PORT;
-const app = express();
 
 /* Keep for 24 hours */
 app.use(cookieSession({
