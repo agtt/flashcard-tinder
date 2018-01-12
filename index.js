@@ -2,8 +2,8 @@
  * FILENAME: index.js
  * PROJECT:  flashcards-tinder
  * CREATED:  2018-01-08T10:54:03
- * MODIFIED: 2018-01-10T09:48:06
- * VERSION:  0.1.0
+ * MODIFIED: 2018-01-12T10:15:05
+ * VERSION:  0.1.1
  * ABOUT:    flashcard-tinder server entry-point
  * AUTHORS:  Steven O'Campo, Dan Winslow, Latoyya Smith, John Wells, Wesley Harvey
  * NOTES:   
@@ -25,6 +25,18 @@ const passport = require('passport');
 const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
+
+/*********************
+ PRODUCTION REQUIREMENTS
+*********************/
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 /*********************
   APPLICATION SERVER
