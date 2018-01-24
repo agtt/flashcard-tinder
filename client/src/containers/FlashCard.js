@@ -24,9 +24,16 @@ class FlashCard extends Component {
           </div>
           <div className="back">
             <div className="backCard">
-              {Object.keys(back).length === 0
+              <h3>{Object.keys(back).length === 0
                 ? ''
-                : this.props.back.backcard.definition}
+                : this.props.back.backcard.definition} </h3>
+              <h4 style={{color: 'green'}}>{Object.keys(back).length === 0
+                ? ''
+                : this.props.back.backcard.syntax} </h4>
+              <h5> {Object.keys(back).length === 0
+                ? ''
+                : this.props.back.backcard.example} </h5>
+                
             </div>
           </div>
         </div>
