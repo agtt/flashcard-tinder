@@ -30,7 +30,7 @@ class FlashCard extends Component {
               <h4 style={{color: 'green'}}>{Object.keys(back).length === 0
                 ? ''
                 : this.props.back.backcard.syntax} </h4>
-              <h5> {Object.keys(back).length === 0
+              <h5 style={{color: 'teal'}}> {Object.keys(back).length === 0
                 ? ''
                 : this.props.back.backcard.example} </h5>
                 
